@@ -70,7 +70,7 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
       return res.status(500).send(e);
     }
     //4-1-2. Twilio側の認証結果を確認 
-    if(verificationReult.status === 'approved') {
+    if(verificationResult.status === 'approved') {
       // 4-1-2. ロールを追加
       req.user.role = '2fa authenticated' ;
       return res.redirect('/account');
