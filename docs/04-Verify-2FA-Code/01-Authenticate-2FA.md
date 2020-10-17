@@ -28,7 +28,7 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
       // 連絡先をキーとしてコードを確認
       verificationResult = await twilio.verify.services(TWILIO_VERIFICATION_SID)
         .verificationChecks
-        .create({ code: code, to: contact_to })
+        .create({ code: code, to: contact_to });
     } catch (e) {
       return res.status(500).send(e);
     }
@@ -65,7 +65,7 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
       // 連絡先をキーとしてコードを確認
       verificationResult = await twilio.verify.services(TWILIO_VERIFICATION_SID)
         .verificationChecks
-        .create({ code: code, to: contact_to })
+        .create({ code: code, to: contact_to });
     } catch (e) {
       return res.status(500).send(e);
     }
