@@ -1,6 +1,6 @@
 # ハンズオン: Twilioアカウントを確認
 
-このハンズオンでは、Twilio APIを利用するための資格情報（`Account Sid`、`Auth Token`）の確認方法について学びます。また、[Twilio Verify](https://www.twilio.com/verify)を利用する際に使用する`Service Sid`の確認方法についてもあわせて学びます。
+このハンズオンでは、Twilio APIを利用するための資格情報（`Account Sid`、`Auth Token`）の確認方法について学びます。また、[Twilio Verify](https://jp.twilio.com/verify)を利用する際に使用する`Service Sid`の確認方法についてもあわせて学びます。
 
 それぞれの値を控えている場合は次のハンズオンに進んでください。
 

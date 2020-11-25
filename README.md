@@ -1,5 +1,5 @@
 # Twilio-HandsOn-AccSec
-Twilioアカウントセキュリティ製品[Verify](https://www.twilio.com/verify)を体験するためのハンズオン手順書です。
+Twilioアカウントセキュリティ製品[Verify](https:/jp.twilio.com/verify)を体験するためのハンズオン手順書です。
 
 ## 必要・推奨環境
 このハンズオンを実施する場合は、次の環境が必要となります。
@@ -11,7 +11,7 @@ Twilioアカウントセキュリティ製品[Verify](https://www.twilio.com/ver
 - gitをインストール済みであること
 - Twilioアカウントを作成していること（トライアル版で問題なし）  
 [アカウントの作成方法](https://www.twilio.com/blog/how-to-create-twilio-account-jp)
-- [www.twilio.com](https://www.twilio.com) にアクセスできること
+- [jp.twilio.com](https://jp.twilio.com) にアクセスできること
 
 ## ハンズオン
 

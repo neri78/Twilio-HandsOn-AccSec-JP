@@ -20,7 +20,7 @@ Twilioが提供するサービスの多くはアカウント情報（`Account SI
 
 ## 1-2. Twilio Verifyサービスの作成
 
-[Twilio Verify](https://www.twilio.com/verify)は二要素認証の仕組みを提供するサービスです。このサービスは主に次のような機能を持っています。
+[Twilio Verify](https:/.twilio.com/verify)は二要素認証の仕組みを提供するサービスです。このサービスは主に次のような機能を持っています。
 
 - コードの生成
 - SMS、音声通話、Email、プッシュ通知でコード通知

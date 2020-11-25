@@ -1,12 +1,12 @@
 # 手順2: 確認コードの送信
 
-この手順では[Twilio Verify]()を用いて確認コードを送信します。
+この手順では[Twilio Verify](https://jp.twilio.com/verify)を用いて確認コードを送信します。
 
 ## 2-1. twilio-nodeヘルパーライブラリをインストール
 
 Twilioの各種APIを利用できるサーバーアプリケーション用のヘルパーライブラリが __Node, Ruby, C#, Python, Java__ 向けとして提供されています。
 
-今回は次のコマンドで`twilio-node`をインストールします。
+コンソールを開き、プロジェクトフォルダで`twilio-node`をインストールします。
 
 ```
 npm i twilio
