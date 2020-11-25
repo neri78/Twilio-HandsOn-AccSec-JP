@@ -103,6 +103,6 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 
 ## 次のハンズオン
 
-[ハンズオン: コードの認証](/docs/04-Verify-2FA-Code/00-Overview.md)
+[ハンズオン: コードの認証](../04-Verify-2FA-Code/00-Overview.md)
 
 

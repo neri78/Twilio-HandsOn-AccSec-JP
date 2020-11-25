@@ -12,4 +12,4 @@
 
 ## 次のハンズオン
 
-[ハンズオン: 二要素認証コードの発行と送信](/docs/03-Send-2FA-Code/00-Overview.md)
+[ハンズオン: 二要素認証コードの発行と送信](../03-Send-2FA-Code/00-Overview.md)

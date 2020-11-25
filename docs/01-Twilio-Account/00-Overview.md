@@ -14,4 +14,4 @@
 
 ## 次のハンズオン
 
-[ハンズオン: Webアプリケーションの準備と必要な情報を設定](/docs/02-Prep-WebApp/00-Overview.md)
+[ハンズオン: Webアプリケーションの準備と必要な情報を設定](../02-Prep-WebApp/00-Overview.md)
