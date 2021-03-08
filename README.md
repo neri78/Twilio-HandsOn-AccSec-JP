@@ -1,4 +1,6 @@
 # Twilio-HandsOn-AccSec
+![Twilio - 2FA](docs/assets/AccSec-Header.jpeg)
+
 Twilioアカウントセキュリティ製品[Verify](https://jp.twilio.com/verify)を体験するためのハンズオン手順書です。
 
 ## 必要・推奨環境
