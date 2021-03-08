@@ -18,6 +18,15 @@ Twilioが提供するサービスの多くはアカウント情報（`Account SI
 
 ![Twilioコンソール](../assets/01-twilio-console.png)
 
+----
+
+今回のハンズオンでは利便性のために使用しませんが実運用では`Account SID`ならびに`Auth Token`のかわりに`APIキー`および`APIキーシークレット`を利用するようにします。
+
+[ドキュメント REST API:APIキー](https://jp.twilio.com/docs/iam/keys/api-key-resource)
+
+---
+
+
 ## 1-2. Twilio Verifyサービスの作成
 
 [Twilio Verify](https://jp.twilio.com/verify)は二要素認証の仕組みを提供するサービスです。このサービスは主に次のような機能を持っています。

@@ -23,7 +23,7 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
     let code = req.body.code;
 
     // twilio側で認証
-    let verificationReult;
+    let verificationResult;
     try {
       // 連絡先をキーとしてコードを確認
       verificationResult = await twilio.verify.services(TWILIO_VERIFICATION_SID)
@@ -60,7 +60,7 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
     let code = req.body.code;
 
     // twilio側で認証
-    let verificationReult;
+    let verificationResult;
     try {
       // 連絡先をキーとしてコードを確認
       verificationResult = await twilio.verify.services(TWILIO_VERIFICATION_SID)
