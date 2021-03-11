@@ -26,6 +26,7 @@ const ensureLogin = require('connect-ensure-login');
 + const twilio = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 const router = express.Router();
+
 ```
 
 このTwilioクライアントは`verify.js`の`POST`アクション時に利用されます。現在は何も実装されていません。
