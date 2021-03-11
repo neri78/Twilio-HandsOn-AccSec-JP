@@ -20,7 +20,7 @@ router.get('/', ensureLoggedIn('/'), (req, res) => {
 
 `account.js`に`userRole.js`を追加します。
 
-```diff js
+```diff
 const express = require('express');
 const { ensureLoggedIn } = require('connect-ensure-login');
 + // 認可プロバイダーを追加
@@ -31,7 +31,7 @@ const router = express.Router();
 
 続けてアカウントページへのアクセス時にユーザーが`access restricted content`アクションを実行できるロールを有しているかを確認するコードに変更します。
 
-```diff js
+```diff
 // アカウントページへのアクセス
 - // connect-ensure-loginを用いてドメインのトップページ ('/')でログイン済みの場合にaccountを表示
 - router.get('/', ensureLoggedIn('/'), (req, res) => {

@@ -16,7 +16,7 @@ npm i twilio
 
 `Verify.js`内でTwilioクライアントを利用するため、初期化を行います。この際に環境変数からそれぞれの情報をロードしておきます。コメントで説明されている行を追加してください。
 
-```diff js
+```diff
 const express = require('express');
 const ensureLogin = require('connect-ensure-login');
 
@@ -26,7 +26,6 @@ const ensureLogin = require('connect-ensure-login');
 + const twilio = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 const router = express.Router();
-
 ```
 
 このTwilioクライアントは`verify.js`の`POST`アクション時に利用されます。現在は何も実装されていません。
@@ -42,7 +41,7 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 
 `POST`時には連絡先となる電話番号が入力されています。また、それぞれのボタンに名前がついているため、SMSで認証するのか、それとも電話で認証するのかを判断します。
 
-```diff js
+```diff
 // 二要素認証ページからPOSTされた際の処理
 router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 
@@ -64,7 +63,7 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 
 連絡先情報とチャネル情報をもとに確認コードを送信します。
 
-```diff js
+```diff
 // 二要素認証ページからPOSTされた際の処理
 router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 

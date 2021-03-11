@@ -8,7 +8,7 @@
 
 先ほど実装した`verify.js`のロジックでは`channel`が指定されている場合に確認コードを送信していました。今回は`channel`が指定されていない場合に`確認`ボタンが押されたと判断し、入力されたコードと連絡先の情報を利用し、Twilioに認証を依頼します。
 
-```diff js
+```diff
 // 二要素認証ページからPOSTされた際の処理
 router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
   //省略
@@ -45,7 +45,7 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 
 `approved` となっていれば正しいコードで認証されていることを示しています。この状態を確認し、ユーザーに`2fa authenticated`ロールを付与し、このハンズオンでは`Account`ページにリダイレクトさせます。
 
-```diff js
+```diff
 // 二要素認証ページからPOSTされた際の処理
 router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
   //省略
