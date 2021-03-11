@@ -20,28 +20,30 @@ router.get('/', ensureLoggedIn('/'), (req, res) => {
 
 `account.js`に`userRole.js`を追加します。
 
-```js
+```diff js
 const express = require('express');
 const { ensureLoggedIn } = require('connect-ensure-login');
-// 認可プロバイダーを追加
-const userRoles = require('../userRoles');
++ // 認可プロバイダーを追加
++ const userRoles = require('../userRoles');
 
 const router = express.Router();
 ```
 
 続けてアカウントページへのアクセス時にユーザーが`access restricted content`アクションを実行できるロールを有しているかを確認するコードに変更します。
 
-```js
+```diff js
 // アカウントページへのアクセス
-// access restricted contentアクションが実行できるロールを持っている場合にaccountを表示
-router.get('/', userRoles.can('access restricted content'), (req, res) => {
+- // connect-ensure-loginを用いてドメインのトップページ ('/')でログイン済みの場合にaccountを表示
+- router.get('/', ensureLoggedIn('/'), (req, res) => {
++ // access restricted contentアクションが実行できるロールを持っている場合にaccountを表示
++ router.get('/', userRoles.can('access restricted content'), (req, res) => {
   res.render('account', {user: req.user});
 });
 ```
 
 今回のハンズオンでは既に認可プロバイダーが`userRoles.js`で実装されています。この認可プロバイダーでは二要素認証を終えていることを示す`2fa authenticated`ロールを持っている場合に`access restricted content`アクションが実行できると判断します。
 
-もし実行できない場合は、二要素認証ページ(`/verify`)を表示させます。
+もし実行できない場合は、二要素認証ページ(`/verify`)を表示させます。参考までに該当するコードブロックを記します。
 
 ```js
 const ConnectRoles = require('connect-roles');

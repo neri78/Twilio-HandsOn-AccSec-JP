@@ -16,14 +16,14 @@ npm i twilio
 
 `Verify.js`内でTwilioクライアントを利用するため、初期化を行います。この際に環境変数からそれぞれの情報をロードしておきます。コメントで説明されている行を追加してください。
 
-```js
+```diff js
 const express = require('express');
 const ensureLogin = require('connect-ensure-login');
 
-//環境変数から値を取得
-const {TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_VERIFICATION_SID} = process.env;
-//Twilioクライアントを初期化
-const twilio = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
++ //環境変数から値を取得
++ const {TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_VERIFICATION_SID} = process.env;
++ //Twilioクライアントを初期化
++ const twilio = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 const router = express.Router();
 ```
@@ -41,20 +41,20 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 
 `POST`時には連絡先となる電話番号が入力されています。また、それぞれのボタンに名前がついているため、SMSで認証するのか、それとも電話で認証するのかを判断します。
 
-```js
+```diff js
 // 二要素認証ページからPOSTされた際の処理
 router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 
-  //2-2. 連絡先の取得
-  let contact_to = req.body.contact_to;
-
-  //2-2. チャネルを確認
-  let channel;
-  let bodyKeys = Object.keys(req.body);
-  if (bodyKeys.find(i => i === 'sms'))
-    channel = 'sms';
-  else if (bodyKeys.find(i => i === 'call'))
-    channel = 'call';
++  //2-2. 連絡先の取得
++  let contact_to = req.body.contact_to;
++
++  //2-2. チャネルを確認
++  let channel;
++  let bodyKeys = Object.keys(req.body);
++  if (bodyKeys.find(i => i === 'sms'))
++    channel = 'sms';
++  else if (bodyKeys.find(i => i === 'call'))
++    channel = 'call';
 
 });
 ```
@@ -63,7 +63,7 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 
 連絡先情報とチャネル情報をもとに確認コードを送信します。
 
-```js
+```diff js
 // 二要素認証ページからPOSTされた際の処理
 router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 
@@ -79,19 +79,20 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
     channel = 'call';
 
   //2-3. チャネルが指定されており、二要素認証を終えていない場合にコードを送信
-  if (channel && req.user.role !== '2fa authenticated') {
-    let verificationRequest;
-    try {
-      //指定の連絡先、チャネルに確認コードを送信。
-      verificationRequest = await twilio.verify.services(TWILIO_VERIFICATION_SID)
-        .verifications
-        .create({ to: contact_to, channel: channel });
-    } catch(e) {
-      return res.status(500).send(e);
-    }
-    return res.render('verify', {user: req.user, contact_to: contact_to});
-  }
-  return res.render('verify', {user: req.user});
++  if (channel && req.user.role !== '2fa authenticated') {
++    let verificationRequest;
++    try {
++      //指定の連絡先、チャネルに確認コードを送信。
++      verificationRequest = await twilio.verify.services(TWILIO_VERIFICATION_SID)
++        .verifications
++        .create({ to: contact_to, channel: channel });
++    } catch(e) {
++      return res.status(500).send(e);
++    }
++    return res.render('verify', {user: req.user, contact_to: contact_to});
++  }
++  return res.render('verify', {user: req.user});
+
 });
 ```
 

@@ -8,7 +8,7 @@
 
 先ほど実装した`verify.js`のロジックでは`channel`が指定されている場合に確認コードを送信していました。今回は`channel`が指定されていない場合に`確認`ボタンが押されたと判断し、入力されたコードと連絡先の情報を利用し、Twilioに認証を依頼します。
 
-```js
+```diff js
 // 二要素認証ページからPOSTされた際の処理
 router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
   //省略
@@ -17,22 +17,22 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
   if (channel && req.user.role !== '2fa authenticated') {
       //省略
   }
-  else {
-    //4-1-1. ユーザーが入力したコードを認証
-    // コードを取得
-    let code = req.body.code;
-
-    // twilio側で認証
-    let verificationResult;
-    try {
-      // 連絡先をキーとしてコードを確認
-      verificationResult = await twilio.verify.services(TWILIO_VERIFICATION_SID)
-        .verificationChecks
-        .create({ code: code, to: contact_to });
-    } catch (e) {
-      return res.status(500).send(e);
-    }
-  }
++  else {
++    //4-1-1. ユーザーが入力したコードを認証
++    // コードを取得
++    let code = req.body.code;
++
++    // twilio側で認証
++    let verificationResult;
++    try {
++      // 連絡先をキーとしてコードを確認
++      verificationResult = await twilio.verify.services(TWILIO_VERIFICATION_SID)
++        .verificationChecks
++        .create({ code: code, to: contact_to });
++    } catch (e) {
++      return res.status(500).send(e);
++    }
++  }
   //ここは前のハンズオンで実装済みの箇所
   return res.render('verify', {user: req.user});
 });
@@ -45,7 +45,7 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
 
 `approved` となっていれば正しいコードで認証されていることを示しています。この状態を確認し、ユーザーに`2fa authenticated`ロールを付与し、このハンズオンでは`Account`ページにリダイレクトさせます。
 
-```js
+```diff js
 // 二要素認証ページからPOSTされた際の処理
 router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
   //省略
@@ -69,12 +69,12 @@ router.post('/', ensureLogin.ensureLoggedIn('/'), async (req, res) => {
     } catch (e) {
       return res.status(500).send(e);
     }
-    //4-1-2. Twilio側の認証結果を確認 
-    if(verificationResult.status === 'approved') {
-      // 4-1-2. ロールを追加
-      req.user.role = '2fa authenticated' ;
-      return res.redirect('/account');
-    }
++    //4-1-2. Twilio側の認証結果を確認 
++    if(verificationResult.status === 'approved') {
++      // 4-1-2. ロールを追加
++      req.user.role = '2fa authenticated' ;
++      return res.redirect('/account');
++    }
   }
   // ここは前のハンズオンで実装済みの箇所
   return res.render('verify', {user: req.user});
